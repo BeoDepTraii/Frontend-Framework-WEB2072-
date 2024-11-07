@@ -1,43 +1,35 @@
 <script setup>
-import Product from "./components/Product.vue";
+import Ref from "./components/Bai1.vue";
+import Reactive from "./components/Bai2.vue";
+import DataBinding from "./components/Bai3.vue";
+import StyleBinding from "./components/Bai4.vue";
 import { ref } from 'vue';
-import Profile from "./components/Profile.vue";
-const courseName = "Framework Vue 3";
-const courseLevel = "Nâng cao";
-const courseTime = 30; //giờ
-// const courseIsActive = true;
-const courseIsActive = ref(true);
 
-function changeBtn() {
-  courseIsActive.value = !courseIsActive.value;
-}
 </script>
 
 <template>
   <div class="container my-5">
-    <div>
-      <h1 class="display-4 mb-3">Thông tin:</h1>
-      <ul class="list-group">
-        <li class="list-group-item">
-          Tên khóa học: <strong>{{ courseName }}</strong>
-        </li>
-        <li class="list-group-item">Cấp độ: {{ courseLevel }}</li>
-        <li class="list-group-item">Thời gian: {{ courseTime }} giờ</li>
-        <li class="list-group-item">
-          Trạng thái: {{ courseIsActive ? "Đang mở" : "Đã đóng" }} <button class="btnChange" @click="changeBtn"><i class='fas fa-exchange-alt'></i></button>
-        </li>
-      </ul>
+
+    <div style="margin-top: 3rem;">
+      <h1 style="color: green">Bài 1</h1>
+      <Ref />
     </div>
 
     <div style="margin-top: 3rem;">
-      <h1 style="color: green">Lab 1</h1>
-      <Product />
+      <h1 style="color: green">Bài 2</h1>
+      <Reactive />
     </div>
 
     <div style="margin-top: 3rem;">
-      <h1 style="color: green">Lab 2</h1>
-      <Profile />
+      <h1 style="color: green">Bài 3</h1>
+      <DataBinding />
     </div>
+
+    <div style="margin-top: 3rem;">
+      <h1 style="color: green">Bài 4</h1>
+      <StyleBinding />
+    </div>
+
   </div>
 </template>
 
@@ -53,11 +45,6 @@ function changeBtn() {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
-}
-.btnChange {
-  margin-left: 10px;
-  font-size: 0.7rem;
-  border-radius: 10%;
 }
 
 </style>

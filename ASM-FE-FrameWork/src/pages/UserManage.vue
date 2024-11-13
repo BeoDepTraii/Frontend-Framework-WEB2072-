@@ -3,69 +3,21 @@
     <div class="col-12">
       <card :title="table1.title" :subTitle="table1.subTitle">
         <div slot="raw-content" class="table-responsive">
-          <paper-table :data="table1.data" :columns="table1.columns">
-          </paper-table>
-        </div>
-      </card>
-      <button class="btn btn-success">Add new user</button>
-    </div>
-
-    <!-- <div class="col-12">
-      <card class="card-plain">
-        <div class="table-full-width table-responsive">
           <paper-table
-            type="hover"
-            :title="table2.title"
-            :sub-title="table2.subTitle"
-            :data="table2.data"
-            :columns="table2.columns"
-          >
-          </paper-table>
+            :data="table1.data"
+            :columns="table1.columns"
+            @edit-item="editUser"
+            @delete-item="deleteUser"
+          />
         </div>
       </card>
-    </div> -->
+      <button class="btn btn-success" @click="addUser">Add new user</button>
+    </div>
   </div>
 </template>
+
 <script>
 import { PaperTable } from "@/components";
-const tableColumns = ["Id", "Name", "Salary", "Country", "City"];
-const tableData = [
-  {
-    id: 1,
-    name: "Dakota Rice",
-    salary: "$36.738",
-    country: "Niger",
-    city: "Oud-Turnhout",
-  },
-  {
-    id: 2,
-    name: "Minerva Hooper",
-    salary: "$23,789",
-    country: "Curaçao",
-    city: "Sinaai-Waas",
-  },
-  {
-    id: 3,
-    name: "Sage Rodriguez",
-    salary: "$56,142",
-    country: "Netherlands",
-    city: "Baileux",
-  },
-  {
-    id: 4,
-    name: "Philip Chaney",
-    salary: "$38,735",
-    country: "Korea, South",
-    city: "Overland Park",
-  },
-  {
-    id: 5,
-    name: "Doris Greene",
-    salary: "$63,542",
-    country: "Malawi",
-    city: "Feldkirchen in Kärnten",
-  },
-];
 
 export default {
   components: {
@@ -75,18 +27,31 @@ export default {
     return {
       table1: {
         title: "User List",
-        subTitle: "Manage all products available in the shop",
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
-      table2: {
-        title: "Table on Plain Background",
-        subTitle: "Here is a subtitle for this table",
-        columns: [...tableColumns],
-        data: [...tableData],
+        subTitle: "Manage all users",
+        columns: ["Id", "Name", "Phone_number", "Email", "Address"],
+        data: [
+          { id: 1, name: "Dakota Rice", phone_number: "0913634651", email: "dakota@example.com", address: "Oud-Turnhout", status: 'active' },
+          { id: 2, name: "Minerva Hooper", phone_number: "0913634651", email: "minerva@example.com", address: "Sinaai-Waas", status: 'inactive' },
+          { id: 3, name: "Sage Rodriguez", phone_number: "0913634651", email: "sage@example.com", address: "Baileux", status: 'active' },
+          { id: 4, name: "Philip Chaney", phone_number: "0913634651", email: "philip@example.com", address: "Overland Park", status: 'inactive' },
+          { id: 5, name: "Doris Greene", phone_number: "0913634651", email: "doris@example.com", address: "Feldkirchen in Kärnten", status: 'active' },
+        ],
       },
     };
   },
+  methods: {
+    addUser() {
+      console.log("Add new user button clicked");
+      // Logic to add a new user (e.g., open a form modal)
+    },
+    editUser(user) {
+      console.log("Edit user:", user);
+      // Logic to edit the selected user (e.g., open an edit modal)
+    },
+    deleteUser(user) {
+      console.log("Delete user:", user);
+      // Logic to delete the selected user (e.g., confirm deletion and remove from data)
+    },
+  },
 };
 </script>
-<style></style>

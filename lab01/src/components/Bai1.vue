@@ -1,24 +1,33 @@
-<script setup>
-    import { ref } from "vue";
-    const productCount = ref(0);
-    const increaseCount = () => {
-    productCount.value++;
-    };
-    const decreaseCount = () => {
-    if (productCount.value > 0) {
-        productCount.value--;
-    }
-    };
-</script>
-
 <template>
-
-  <div class="container">
-    <h1>Quản lý giỏ hàng với ref()</h1>
-    <p>Số lượng sản phẩm: {{ productCount }}</p>
-    <button style="margin-right: 5px;" class="btn btn-success" @click="increaseCount">Tăng</button>
-
-    <button class="btn btn-warning" @click="decreaseCount" :disabled="productCount === 0">Giảm</button>
+  <div class="card">
+    <img :src="product.imageUrl" class="card-img-top" alt="product image" />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text">Giá: {{ product.price }} VND</p>
+      <p class="card-text">Số lượng: {{ product.quantity }}</p>
+      <p class="card-text">Danh mục: {{ product.category }}</p>
+      <span
+        class="badge"
+        :class="{
+          'bg-success': product.inStock,
+          'bg-danger': !product.inStock,
+        }"
+      >
+        {{ product.inStock ? "Còn hàng" : "Hết hàng" }}
+      </span>
+    </div>
   </div>
-
 </template>
+<script setup>
+import { reactive } from "vue";
+const product = reactive({
+  id: 1,
+  name: "Sản phẩm A",
+  price: 100,
+  quantity: 5,
+  category: "Điện tử",
+  inStock: false,
+  description: "Mô tả A",
+  imageUrl: "https://picsum.photos/id/1/300/300",
+});
+</script>

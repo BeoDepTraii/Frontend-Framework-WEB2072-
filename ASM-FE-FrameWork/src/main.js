@@ -1,29 +1,16 @@
-/*!
-
- =========================================================
- * Vue Paper Dashboard - v1.0.1
- =========================================================
-
- * Product Page: http://www.creative-tim.com/product/paper-dashboard
- * Copyright 2023 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE.md)
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
-import Vue from "vue";
+import Vue from "vue"; // Import Vue từ Vue 2.x
 import App from "./App";
 import router from "./router/index";
-
 import PaperDashboard from "./plugins/paperDashboard";
-import "vue-notifyjs/themes/default.css";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
-Vue.use(PaperDashboard);
+// Khởi tạo ứng dụng Vue và cấu hình
+Vue.use(PaperDashboard); // Sử dụng PaperDashboard (nếu cần thiết)
+Vue.use(Toast); // Sử dụng Toast
 
-/* eslint-disable no-new */
+// Khởi tạo và cấu hình Vue instance
 new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount("#app");
+  router, // Sử dụng router
+  render: (h) => h(App), // Render component App
+}).$mount("#app"); // Mount ứng dụng vào phần tử có id là app

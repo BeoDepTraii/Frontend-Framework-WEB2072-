@@ -7,7 +7,15 @@
     </thead>
     <tbody>
       <tr v-for="(item, index) in data" :key="index">
-        <td v-for="(column, index) in columns" :key="index">{{ item[column.toLowerCase()] }}</td>
+        <td v-for="(column, index) in columns" :key="index">
+          <!-- Kiểm tra nếu cột là "Image", nếu đúng thì hiển thị ảnh -->
+          <template v-if="column === 'Image'">
+            <img :src="item.img" alt="Product Image" class="img-thumbnail" style="max-width: 50px; max-height: 50px;" />
+          </template>
+          <template v-else>
+            {{ item[column.toLowerCase()] }}
+          </template>
+        </td>
         <td>
           <span :class="item.status === 'active' ? 'badge bg-success' : 'badge bg-danger'">
             {{ item.status === 'active' ? 'Active' : 'Inactive' }}
@@ -15,7 +23,7 @@
         </td>
         <td>
           <button @click="$emit('edit-item', item)" class="ti-cut btn btn-warning mr-2"></button>
-          <button @click="$emit('delete-item', item)" class="ti-close btn btn-danger"></button>
+          <button @click="$emit('delete-item', item)" class="ti-trash btn btn-danger"></button>
         </td>
       </tr>
     </tbody>
@@ -38,12 +46,16 @@ export default {
 };
 </script>
 
-
-<style>
-
+<style scoped>
 .badge {
   text-transform: uppercase;
   font-size: small !important;
   color: rgb(255, 255, 255);
+}
+
+img {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
 }
 </style>

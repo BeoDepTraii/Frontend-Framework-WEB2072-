@@ -6,7 +6,7 @@
         <sidebar-link to="/user-manage" name="User Manage" icon="ti-user" />
         <sidebar-link to="/product-manage" name="Product Manage" icon="ti-package" />
         <sidebar-link to="/order-manage" name="Order Manage" icon="ti-shopping-cart"/>
-        <sidebar-link to="/stats" name="User Manage" icon="ti-user" />
+        <sidebar-link to="/icons" name="User Manage" icon="ti-user" />
         <!-- <sidebar-link to="/typography" name="Typography" icon="ti-text" />
         <sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2" />
         <sidebar-link to="/maps" name="Map" icon="ti-map" />
